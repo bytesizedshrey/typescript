@@ -20,7 +20,7 @@ function orderRedBull(size : 'medium' | 'small' | 'large' | number){
     return `bull order : ${size}`
 }
 
-class redbull{
+class Redbull{
     serve(){
         return `Serving RedBull`
     }
@@ -29,5 +29,52 @@ class redbull{
 class Monster{
     serve(){
         return `Serving Monster`
+    }
+}
+
+function serveDrink(drinks: Redbull | Monster){
+    if(Monster instanceof serveDrink){
+        return drinks.serve()
+    }
+}
+
+type drinkOrder = {
+    type : string,
+    sugar : number
+}
+
+function isDrinkOrder(obj:any):obj is drinkOrder{
+    return(
+        typeof obj === 'object' &&
+        obj !== null && 
+        typeof obj.type === 'string' &&
+        typeof obj.sugar === 'number'
+    )
+}
+
+function serveOrder(item:drinkOrder | string){
+    if(isDrinkOrder(item)){
+        return `serving ${item.type} with ${item.sugar} sugar`
+    }
+    return `serving : ${item}`
+}
+
+type red = {car : "ferrari"; rank : number}
+type black = {car : "mercedes"; rank : number}
+type orange = {car : "mcalren"; rank : number}
+
+type team = red | black | orange
+
+function who_won(rank : team){
+    switch(rank.car){
+        case "ferrari" :
+            return `ferrari won`
+            break
+        case "mercedes" :
+            return `mercedes won`
+            break
+        case "mcalren" : 
+            return "mclaren won"
+            break
     }
 }
