@@ -35,3 +35,9 @@ let bigCup = {size: "500ml", material: "steel"}
 
 smallCup = bigCup
 
+
+const updateChai = (updates : Partial<Cup> => {
+    console.log('updating chai with : ', updates)
+})
+
+updateChai({smallCup: 25})
